@@ -36,10 +36,11 @@ Feature: Egress compoment upgrade testing
       | n | <%= project.name %> |
     Then the step should succeed
 
+    And evaluation of `BushSlicer::Common::Net.dns_lookup("redhat.com")` is stored in the :redhat_ip clipboard
     And I wait up to 10 seconds for the steps to pass:
     """
     When I execute on the "<%= cb.pod1 %>" pod:
-      | curl | -I | --connect-timeout | 5 | redhat.com |
+      | curl | -I | --connect-timeout | 5 | <%= cb.redhat_ip %> |
     Then the step should fail
     And the output should contain "timed out"
     """
@@ -57,6 +58,7 @@ Feature: Egress compoment upgrade testing
   @heterogeneous @arm64 @amd64
   Scenario: Check egressfirewall is functional post upgrade
     Given the cluster is not migration from sdn plugin
+    And evaluation of `BushSlicer::Common::Net.dns_lookup("redhat.com")` is stored in the :redhat_ip clipboard
     Given I switch to cluster admin pseudo user
     And I save egress type to the clipboard
     When I run the :get admin command with:
@@ -71,7 +73,7 @@ Feature: Egress compoment upgrade testing
       | name=test-pods |
     And evaluation of `pod(0).name` is stored in the :pod1 clipboard
     When I execute on the "<%= cb.pod1 %>" pod:
-      | curl | -I | --connect-timeout | 5 | redhat.com |
+      | curl | -I | --connect-timeout | 5 | <%= cb.redhat_ip %> |
     Then the step should fail
     And the output should contain "timed out"
 
