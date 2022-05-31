@@ -42,7 +42,6 @@ Feature: Egress compoment upgrade testing
     When I execute on the "<%= cb.pod1 %>" pod:
       | curl | -I | --connect-timeout | 5 | <%= cb.redhat_ip %> |
     Then the step should fail
-    And the output should contain "timed out"
     """
 
   # @author huirwang@redhat.com
@@ -75,7 +74,6 @@ Feature: Egress compoment upgrade testing
     When I execute on the "<%= cb.pod1 %>" pod:
       | curl | -I | --connect-timeout | 5 | <%= cb.redhat_ip %> |
     Then the step should fail
-    And the output should contain "timed out"
 
   # @author huirwang@redhat.com
   @admin
