@@ -1366,7 +1366,7 @@ end
 Given /^I save ipecho url to the#{OPT_SYM} clipboard$/ do | cb_name |
   ensure_admin_tagged
   cb_name = "ipecho_url" unless cb_name
-  cb[cb_name]="172.31.249.80:9095"
+  cb[cb_name]="192.168.3.11:9095"
   logger.info "The ipecho service url #{cb[cb_name]} is stored to the #{cb_name} clipboard."
 end
 
