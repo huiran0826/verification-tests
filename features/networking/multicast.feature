@@ -626,8 +626,10 @@ Feature: testing multicast scenarios
       | exec_command     | omping           |
       | exec_command_arg | -c               |
       | exec_command_arg | 5                |
+      | exec_command_arg | -i               |
+      | exec_command_arg | 2                |
       | exec_command_arg | -T               |
-      | exec_command_arg | 10               |
+      | exec_command_arg | 30               |
       | exec_command_arg | <%= cb.pod1ip %> |
       | exec_command_arg | <%= cb.pod3ip %> |
     Then the step should succeed
