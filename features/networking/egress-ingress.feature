@@ -14,6 +14,7 @@ Feature: Egress-ingress related networking scenarios
   @hypershift-hosted
   @critical
   Scenario: OCP-11639:SDN EgressNetworkPolicy will not take effect after delete it
+    Given the cluster is proxy cluster
     Given I have a project
     Given I have a pod-for-ping in the project
     Given I save egress data file directory to the clipboard
@@ -61,6 +62,7 @@ Feature: Egress-ingress related networking scenarios
   @hypershift-hosted
   @critical
   Scenario: OCP-13502:SDN Apply different egress network policy in different projects
+    Given the cluster is proxy cluster
     Given the env is using multitenant or networkpolicy network
     Given I have a project
     Given I have a pod-for-ping in the project
@@ -139,6 +141,7 @@ Feature: Egress-ingress related networking scenarios
   @hypershift-hosted
   @critical
   Scenario: OCP-13507:SDN The rules of egress network policy are added in openflow
+    Given the cluster is proxy cluster
     Given the env is using multitenant or networkpolicy network
     Given I have a project
     And evaluation of `project.name` is stored in the :proj1 clipboard
@@ -187,6 +190,7 @@ Feature: Egress-ingress related networking scenarios
   @hypershift-hosted
   @critical
   Scenario: OCP-13509:SDN Egress network policy use dnsname with multiple ipv4 addresses
+    Given the cluster is proxy cluster
     Given the env is using multitenant or networkpolicy network
     Given I have a project
     Given I have a pod-for-ping in the project
@@ -225,6 +229,7 @@ Feature: Egress-ingress related networking scenarios
   @hypershift-hosted
   @critical
   Scenario: OCP-15005:SDN Service with a DNS name can not by pass Egressnetworkpolicy with that DNS name
+    Given the cluster is proxy cluster
     Given the env is using multitenant or networkpolicy network
     Given I have a project
     Given I have a pod-for-ping in the project
@@ -289,6 +294,7 @@ Feature: Egress-ingress related networking scenarios
   @hypershift-hosted
   @critical
   Scenario: OCP-15017:SDN Add nodes local IP address to OVS rules for egressnetworkpolicy
+    Given the cluster is proxy cluster
     Given the env is using multitenant or networkpolicy network
     Given I have a project
     Given I have a pod-for-ping in the project
@@ -344,6 +350,7 @@ Feature: Egress-ingress related networking scenarios
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
   Scenario: OCP-13506:SDN Update different dnsname in same egress network policy
+    Given the cluster is proxy cluster
     Given I have a project
     Given I have a pod-for-ping in the project
 
@@ -385,6 +392,7 @@ Feature: Egress-ingress related networking scenarios
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
   Scenario: OCP-19615:SDN Iptables should be updated with correct endpoints when egress DNS policy was used
+    Given the cluster is proxy cluster
     Given the env is using "OpenShiftSDN" networkType	
     Given I have a project
     And the appropriate pod security labels are applied to the namespace
@@ -442,8 +450,8 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
-  @osd_ccs @rosa
   Scenario: OCP-33530:SDN EgressFirewall allows traffic to destination ports
+    Given the cluster is proxy cluster
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
     Given I have a pod-for-ping in the project
@@ -486,9 +494,9 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
-  @osd_ccs @rosa
   @critical
   Scenario: OCP-33531:SDN EgressFirewall rules take effect in order
+    Given the cluster is proxy cluster
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
     Given I have a pod-for-ping in the project
@@ -515,8 +523,8 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
-  @osd_ccs @rosa
   Scenario: OCP-33539:SDN EgressFirewall policy should not take effect for traffic between pods and pods to service
+    Given the cluster is proxy cluster
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
     # Create EgressFirewall policy to deny all outbound traffic
@@ -557,8 +565,8 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
-  @osd_ccs @rosa
   Scenario: OCP-33565:SDN EgressFirewall policy take effect for multiple port
+    Given the cluster is proxy cluster
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
     Given I have a pod-for-ping in the project
@@ -592,6 +600,7 @@ Feature: Egress-ingress related networking scenarios
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
   Scenario: OCP-35341:SDN EgressNetworkPolicy maxItems is 1000
+    Given the cluster is proxy cluster
     Given the env is using "OpenShiftSDN" networkType
     Given I have a project
     Given I obtain test data file "networking/egressnetworkpolicy/egressnetworkpolicy_1000.yaml"
@@ -621,9 +630,9 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
-  @osd_ccs @rosa
   @critical
   Scenario: OCP-37491:SDN EgressFirewall allows traffic to destination dnsName
+    Given the cluster is proxy cluster
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
     Given I have a pod-for-ping in the project
@@ -661,9 +670,9 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
-  @osd_ccs @rosa
   @critical
   Scenario: OCP-37495:SDN EgressFirewall denys traffic to destination dnsName
+    Given the cluster is proxy cluster
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
 
@@ -701,8 +710,8 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
-  @osd_ccs @rosa
   Scenario: OCP-37496:SDN Edit EgressFirewall should take effect
+    Given the cluster is proxy cluster
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
     Given I have a pod-for-ping in the project
@@ -744,6 +753,7 @@ Feature: Egress-ingress related networking scenarios
   @hypershift-hosted
   @critical
   Scenario: OCP-41179:SDN bug1947917 Egress Firewall should reliably apply firewall rules
+    Given the cluster is proxy cluster
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
     Given I have a pod-for-ping in the project
