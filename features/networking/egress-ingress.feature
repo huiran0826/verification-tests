@@ -442,6 +442,7 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
+  @osd_ccs @rosa
   Scenario: OCP-33530:SDN EgressFirewall allows traffic to destination ports
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
@@ -485,6 +486,7 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
+  @osd_ccs @rosa
   @critical
   Scenario: OCP-33531:SDN EgressFirewall rules take effect in order
     Given the env is using "OVNKubernetes" networkType
@@ -513,6 +515,7 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
+  @osd_ccs @rosa
   Scenario: OCP-33539:SDN EgressFirewall policy should not take effect for traffic between pods and pods to service
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
@@ -554,6 +557,7 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
+  @osd_ccs @rosa
   Scenario: OCP-33565:SDN EgressFirewall policy take effect for multiple port
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
@@ -617,6 +621,7 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
+  @osd_ccs @rosa
   @critical
   Scenario: OCP-37491:SDN EgressFirewall allows traffic to destination dnsName
     Given the env is using "OVNKubernetes" networkType
@@ -656,6 +661,7 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
+  @osd_ccs @rosa
   @critical
   Scenario: OCP-37495:SDN EgressFirewall denys traffic to destination dnsName
     Given the env is using "OVNKubernetes" networkType
@@ -695,6 +701,7 @@ Feature: Egress-ingress related networking scenarios
   @network-ovnkubernetes
   @s390x @ppc64le @heterogeneous @arm64 @amd64
   @hypershift-hosted
+  @osd_ccs @rosa
   Scenario: OCP-37496:SDN Edit EgressFirewall should take effect
     Given the env is using "OVNKubernetes" networkType
     Given I have a project
